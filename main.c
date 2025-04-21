@@ -1,54 +1,53 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
+
+typedef struct Person {
+	char* name; // 문자열
+	int age;	 // 정수
+	float height; // 실수
+}Person;
 int main() {
-	// 문자열 변수(문자배열) vs 문자열 상수
-	// 문자열 상수
-	char* str1 = "abc";
-	// 메모리상의 읽기 전용 영역에 저장
-	// str1에는 "abc"의 시작 주소가 저장
-	// 문자열 상수는 수정하면 안됩니다.
-	// str1[0] = 'b'; // 실행시 오류!! 읽기전용 메모리를 변경하려고 했기에
-	printf("%s", str1);
-	printf("%c", str1[0]);
-	str1 = "bbc"; // 가능!! 왜? 포인터니깐 다른 주소를 다시 가리킬수있음
-	// 문자열 변수(문자배열) -- 스택영역에 저장
-	char str2[4]; // 배열은 실제 메모리 공간
-	str2[0] = 'a';
-	str2[1] = 'b';
-	str2[2] = 'c';
-	str2[3] = '\0';
-	// 읽기쓰기 모두 가능한 진짜 변수
-	str2[0] = 'b';
-	printf("%s", str2);
-	// str1은 문자열 상수의 주소를 가리키는 포인터
-	// str2는 문자열을 저장하는 배열(변수)
-	char* str3 = "abc";
-	// 위에서 이미 만들어졌으면 같은 주소를 가리킨다.
-	char str4[4] = "abc";
-	// str2와 str4가 같은 내용을 갖고있지만 완전히 독립적인 배열
-	// 문자열 상수는 프로그램이 끝날때까지 계속 살아있음
-	// 문자열 변수는 함수가 끝나거나 스코프를 벗어나게 되면 사라진다.
-	// 문자열 상수를 이용하면 좋은 장점 : 메모리를 효율적으로 관리할 수 있다.
-	// 문자열 상수를 이용하면 안좋은 단점 : 수정 불가능, 메모리 낭비가 될 수 있다.
+	//strcpy(대상, 원본); // 문자열을 복사할때 사용
+	//char src[] = "apple";
+	//char dest[6];
+	//strcpy(dest, src);
+	//strncpy(대상, 원본, 복사할최대글자수); //원본 문자열의 앞에서부터 최대n글자까지 복사
+	//// => \0널문자가 자동으로 붙지 않을수도 있음
+	//char src1[] = "apple";
+	//char dest1[10];
+	//strncpy(dest1, src1, 5);
+	//dest1[5] = '\0';
+	// strcmp(a,b) // 전체가 똑같은지 확인하고 싶을때
+	// strncmp(a,b,n) // 일부분만 비교하고 싶을때
 
-	// 스택나라 vs 공공재나라
-	// 스택나라 : 지역변수 int a; char arr[5]
-	// 공공재나라 : 공유되는 자원, 상수,문자열 사는 곳 "abc" "hello"
-	//
-	// #include <string.h> // 문자열 관련함수를 모아놓은 표준 라이브러리
-	// strcpy() //복사를 하기 위해 사용하는 함수
-	// strcpy(공간,문자열)
-	// strlen() // 문자열의 길이 구할때
-	char src[] = "apple";
-	char d[10];
-	strcpy(d, src);
-	printf("%s\n", d); // apple
-	printf("%zu", strlen(src)); // 문자열의 길이(문자수)
+	//int a = 20;
+	//char* name; //이름 // 문자열
+	//int age;	//나이 // 정수
+	//float height; // 키 // 실수
 
-	// 1) c언어에서 문자열 끝은 \0로 표시한다
-	// 2) \0를 만날 경우 반복문을 종료해야한다.
-	// 3) 문자열의 각 문자들을 차례대로 확인하면서 \0문자가 나올때까지 센다
+	//struct 사람 {
+	//	이름;
+	//	나이;
+	//	키;
+	//};
+	
+	struct Person p1;
+	Person p2;
+	p1.name = "전혜성";
+	p1.age = 28;
+	p1.height = 170.3;
+	printf("%s\n", p1.name);
+	printf("%d\n", p1.age);
+	printf("%.1f\n", p1.height);
+
+	// #include <stdbool.h>
+	// #define true 1
+	// #define false 0
+	// #define bool_Bool
+
+
+
 
 	return 0;
 }
