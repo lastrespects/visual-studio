@@ -13,7 +13,8 @@ struct Book {
 };
 int main() {
 	struct Node n1 = { 10, NULL };
-	struct Node n2 = { 20, NULL };
+	struct Node n2 = { 20, NULL }; 
+
 	n1.next = &n2; // n1이 다음 노드인 n2를 가리키게 함
 
 	struct Book b1 = ("C언어", 2020, NULL);
